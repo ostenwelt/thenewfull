@@ -1,2 +1,2 @@
 # thenewfull
-The New Full - website source, deployed via Cloudflre Pages
+The New Full - website source, deployed via Cloudflare Pages
