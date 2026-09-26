@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Read The New Full</title>
+<meta name="description" content="Read The New Full by Marcio and Renata Cavalcanti.">
+<link rel="icon" href="/assets/logo_icon_only_navy.png">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #FAF7F0;
+  --text: #22282e;
+  --text-dim: #6b6458;
+  --navy: #14202B;
+  --gold: #C8963C;
+  --gold-bright: #D9A441;
+  --ivory: #F4EFE6;
+  --card-bg: #fff;
+  --card-border: #e8e0cf;
+  --banner-bg: #FFF2CC;
+  --banner-text: #5c4d1a;
+  --link: #a8791f;
+  --shadow: rgba(0,0,0,0.15);
+}
+:root[data-theme="dark"] {
+  --bg: #14202B; --text: #F4EFE6; --text-dim: #a9a296; --card-bg: #1c2a38; --card-border: #2c3c4c;
+  --banner-bg: #2a2312; --banner-text: #e8cf8a; --link: #D9A441; --shadow: rgba(0,0,0,0.4);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14202B; --text: #F4EFE6; --text-dim: #a9a296; --card-bg: #1c2a38; --card-border: #2c3c4c;
+    --banner-bg: #2a2312; --banner-text: #e8cf8a; --link: #D9A441; --shadow: rgba(0,0,0,0.4);
+  }
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); min-height: 100%; }
+body {
+  font-family: Georgia, 'Times New Roman', serif; background: var(--bg); color: var(--text);
+  margin: 0; padding: 0; min-height: 100vh; line-height: 1.7; font-size: 19px;
+  transition: background 150ms ease, color 150ms ease;
+}
+.wrap { max-width: 680px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+.cover { text-align: center; padding: 2.5rem 1rem 1.5rem; }
+.cover h1 { font-family: Arial, sans-serif; font-weight: 900; font-size: 2.4rem; color: var(--text); margin: 0.3rem 0 0; letter-spacing: -0.01em; border: 0; padding: 0; }
+.cover .eyebrow { font-family: Arial, sans-serif; font-weight: 700; color: var(--gold); letter-spacing: 0.35em; font-size: 0.8rem; }
+.cover .subtitle { font-style: italic; color: var(--text-dim); font-size: 1rem; margin-top: 0.8rem; }
+.cover .authors { font-family: Arial, sans-serif; color: var(--gold); letter-spacing: 0.15em; font-size: 0.85rem; margin-top: 1.2rem; }
+.cover img.ring { width: 56px; height: 56px; display: block; margin: 0 auto 0.8rem; }
+.sans { font-family: Arial, sans-serif; }
+.card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 1.25rem; margin: 0 0 1.5rem; font-family: Arial, sans-serif; font-size: 0.95rem; line-height: 1.55; }
+.card h2 { margin-top: 0; }
+.card p { margin: 0 0 0.9rem; }
+.card .fine { font-size: 0.78rem; color: var(--text-dim); margin: 0.8rem 0 0; }
+label { display: block; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.4rem; }
+input[type=email], input[type=text] {
+  width: 100%; font-size: 1rem; padding: 0.75rem 0.9rem; border-radius: 8px; border: 1px solid var(--card-border);
+  background: var(--bg); color: var(--text); font-family: Arial, sans-serif;
+}
+input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.btn {
+  display: inline-block; width: 100%; text-align: center; margin-top: 0.8rem; padding: 0.85rem 1rem; border-radius: 8px;
+  border: 0; background: var(--navy); color: var(--ivory); font-family: Arial, sans-serif; font-weight: 700; font-size: 0.95rem;
+  letter-spacing: 0.04em; cursor: pointer; text-decoration: none;
+}
+:root[data-theme="dark"] .btn { background: var(--gold-bright); color: var(--navy); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { background: var(--gold-bright); color: var(--navy); } }
+.btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--card-border); }
+.btn[disabled] { opacity: 0.6; cursor: default; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--link); text-decoration: underline; cursor: pointer; font: inherit; }
+.msg { font-size: 0.85rem; margin-top: 0.7rem; min-height: 1.2em; }
+.msg.err { color: #b3402a; }
+.access-bar {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  font-family: Arial, sans-serif; font-size: 0.8rem; color: var(--text-dim);
+  border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); padding: 0.6rem 0; margin: 0 0 1.5rem;
+}
+.access-bar strong { color: var(--text); }
+.resume-banner {
+  display: none; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--card-bg); border: 1px solid var(--gold); border-radius: 8px; padding: 0.8rem 1rem; margin: 0 0 1.2rem;
+  font-family: Arial, sans-serif; font-size: 0.85rem;
+}
+.resume-banner.show { display: flex; }
+.resume-banner a { color: var(--text); font-weight: 700; text-decoration: none; }
+.resume-banner button { background: none; border: none; color: var(--text-dim); font-size: 1rem; cursor: pointer; line-height: 1; padding: 0 0.2rem; }
+.toc { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+.toc-title { font-family: Arial, sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.6rem; }
+.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc li { margin: 0.35rem 0; }
+.toc li.toc-part { margin-top: 0.7rem; font-weight: 700; }
+.toc a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
+.toc a:hover { color: var(--gold); }
+h1 { font-family: Arial, sans-serif; font-weight: 900; font-size: 1.5rem; color: var(--text); margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--gold); line-height: 1.25; scroll-margin-top: 1rem; }
+h1.part { text-align: center; border-bottom: 0; color: var(--gold); letter-spacing: 0.04em; margin-top: 4rem; }
+h2 { font-family: Arial, sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); margin: 1.8rem 0 0.6rem; }
+h1 + h2, .chapter > h2:first-child { margin-top: 1rem; }
+h3 { font-family: Arial, sans-serif; font-weight: 700; font-size: 1rem; margin: 1.4rem 0 0.5rem; }
+p { margin: 0 0 1.1rem; }
+.part-body p { text-align: center; font-style: italic; color: var(--text-dim); }
+strong { color: var(--text); }
+ul, ol { padding-left: 1.3rem; margin: 0 0 1.1rem; }
+li { margin-bottom: 0.5rem; }
+.book img { max-width: 100%; max-height: 80vh; width: auto; height: auto; display: block; margin: 1.2rem auto; border-radius: 4px; }
+.book img[src$=".png"] { background: #fff; }
+.orn { text-align: center; color: var(--gold); font-size: 1.1rem; margin: 2rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 1rem 0; font-family: Arial, sans-serif; }
+th { background: var(--navy); color: var(--ivory); padding: 0.5rem 0.6rem; text-align: left; }
+td { border-bottom: 1px solid var(--card-border); padding: 0.5rem 0.6rem; color: var(--text); }
+a { color: var(--link); }
+.foot { font-family: Arial, sans-serif; font-size: 0.8rem; color: var(--text-dim); text-align: center; margin-top: 3rem; }
+.foot a { color: var(--text-dim); }
+.hidden { display: none !important; }
+@media (min-width: 700px) { body { font-size: 20px; } }
+.theme-toggle {
+  position: fixed; right: 16px; top: 16px; z-index: 41; width: 42px; height: 42px; border-radius: 50%;
+  background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; box-shadow: 0 2px 8px var(--shadow);
+}
+.nav-tab {
+  position: fixed; left: 0; top: 45%; transform: translateY(-50%);
+  background: #14202B; color: #D9A441; border: none; border-radius: 0 8px 8px 0;
+  padding: 14px 8px; font-family: Arial, sans-serif; font-weight: 700; font-size: 0.75rem;
+  letter-spacing: 0.08em; writing-mode: vertical-rl; text-orientation: mixed;
+  cursor: pointer; z-index: 40; box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+}
+.nav-overlay { position: fixed; inset: 0; background: rgba(20,32,43,0.45); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 45; }
+.nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-panel {
+  position: fixed; top: 0; left: 0; height: 100%; width: 82%; max-width: 340px; background: var(--bg); z-index: 50;
+  padding: 1.5rem 1.25rem 2rem; transform: translateX(-100%); transition: transform 0.25s ease; overflow-y: auto; box-shadow: 4px 0 20px rgba(0,0,0,0.2);
+}
+.nav-panel.open { transform: translateX(0); }
+.nav-panel-close { background: none; border: none; font-size: 1.4rem; color: var(--text-dim); position: absolute; top: 1rem; right: 1rem; cursor: pointer; line-height: 1; }
+.nav-panel ul { list-style: none; margin: 0; padding: 0; }
+.nav-panel li { margin: 0.4rem 0; }
+.nav-panel li.toc-part { margin-top: 0.8rem; font-weight: 700; }
+.nav-panel a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-family: Georgia, serif; }
+.nav-panel a:hover { color: var(--gold); }
+</style>
+<script>
+(function () {
+  try { var saved = localStorage.getItem('tnf-theme'); if (saved) document.documentElement.setAttribute('data-theme', saved); } catch (e) {}
+  try {
+    var src = new URLSearchParams(location.search).get('src');
+    if (src) localStorage.setItem('tnf-src', src.slice(0, 60));
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" aria-label="Switch light or dark mode">&#9788;</button>
+<button class="nav-tab hidden" id="navTab">CHAPTERS</button>
+<div class="nav-overlay" id="navOverlay"></div>
+<nav class="nav-panel" id="navPanel" aria-label="Chapters">
+  <button class="nav-panel-close" id="navClose" aria-label="Close">&times;</button>
+  <p class="toc-title">Jump to a chapter</p>
+  <ul id="navList"></ul>
+</nav>
+
+<div class="wrap">
+  <div class="cover">
+    <img class="ring" src="/assets/logo_icon_only_navy.png" alt="">
+    <div class="eyebrow">THE NEW FULL</div>
+    <div class="subtitle">We Lost Over 200 Pounds Together. Here's Everything Nobody Told Us.</div>
+    <div class="authors">MARCIO &amp; RENATA CAVALCANTI</div>
+  </div>
+
+  <p class="sans" id="loading" style="text-align:center;color:var(--text-dim)">Loading&hellip;</p>
+
+  <!-- Signed out -->
+  <section id="signin" class="hidden">
+    <div class="card">
+      <h2>Read the whole book, free for 30 days</h2>
+      <p>Enter your email and we'll send you a sign-in link. No password, no card. Your 30 days start the first time you open the book.</p>
+      <form id="emailForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email" required placeholder="you@example.com">
+        <button class="btn" type="submit" id="sendBtn">Email me a sign-in link</button>
+      </form>
+      <div class="msg" id="emailMsg" role="status"></div>
+      <form id="codeForm" class="hidden">
+        <label for="code">Or type the code from the email</label>
+        <input type="text" id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="6-digit code">
+        <button class="btn secondary" type="submit">Open the book</button>
+      </form>
+      <p class="fine">We use your email only to sign you in and keep your place in the book. Reading on a phone inside Facebook? If the link opens the wrong app, type the code instead.</p>
+    </div>
+  </section>
+
+  <!-- Month ended -->
+  <section id="ended" class="hidden">
+    <div class="card">
+      <h2>Your free month has ended</h2>
+      <p>Thank you for reading. If you'd like to keep the book, there are two ways.</p>
+      <a class="btn" href="https://www.amazon.com/dp/B0HKBMRPCX" target="_blank" rel="noopener">Get it on Kindle</a>
+      <a class="btn secondary hidden" id="lifetimeBtn" href="#" rel="noopener">Keep reading here, lifetime access, $6.99</a>
+      <p class="fine" id="lifetimeSoon">Lifetime web access is coming soon.</p>
+    </div>
+    <div class="card">
+      <h2>One optional favor</h2>
+      <p>If the book helped you, an honest review on Amazon helps other people find it. Good, bad or in between. It's entirely up to you and never required.</p>
+      <a class="btn secondary" href="https://www.amazon.com/review/create-review?asin=B0HKBMRPCX" target="_blank" rel="noopener">Write a review</a>
+      <p class="fine">If you do write one, Amazon asks that you mention you read a free copy.</p>
+    </div>
+  </section>
+
+  <!-- Reader -->
+  <section id="reader" class="hidden">
+    <div class="access-bar"><span id="accessText"></span><span><button class="linkbtn" id="signOut">Sign out</button></span></div>
+    <div class="resume-banner" id="resumeBanner">
+      <span>Pick up in <a href="#" id="resumeLink"></a></span>
+      <button id="resumeClose" aria-label="Dismiss">&times;</button>
+    </div>
+    <nav class="toc"><p class="toc-title">Contents</p><ul id="tocList"></ul></nav>
+    <div class="book" id="book"></div>
+    <div class="card" style="margin-top:3rem">
+      <h2>If the book helped</h2>
+      <p>An honest review on Amazon helps other people find it. Entirely optional.</p>
+      <a class="btn secondary" href="https://www.amazon.com/review/create-review?asin=B0HKBMRPCX" target="_blank" rel="noopener">Write a review</a>
+      <p class="fine">If you review it, Amazon asks that you mention you read a free copy.</p>
+    </div>
+  </section>
+
+  <p class="foot">&copy; 2026 Marcio and Renata Cavalcanti. For your personal reading only.<br><a href="/">thenewfull.com</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function () {
+  var SUPABASE_URL = 'https://dflgapqctwvaavhhuoro.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_nc1qcwuBDMoMSnZ1lmvUAw__c1v7mGL'; // publishable key, safe in the browser (RLS protects the data)
+  var LIFETIME_URL = ''; // Stripe payment link, set once Marcio approves direct sales
+  var POS_KEY = 'tnf-read-pos';
+
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    db: { schema: 'tnf' },
+    auth: { flowType: 'implicit', persistSession: true, detectSessionInUrl: true }
+  });
+
+  var $ = function (id) { return document.getElementById(id); };
+  function show(id) { ['loading', 'signin', 'ended', 'reader'].forEach(function (s) { $(s).classList.toggle('hidden', s !== id); }); }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  // Theme
+  function currentTheme() {
+    var attr = document.documentElement.getAttribute('data-theme');
+    if (attr) return attr;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  function updateToggleIcon() { $('themeToggle').innerHTML = currentTheme() === 'dark' ? '&#9789;' : '&#9788;'; }
+  var userId = null;
+  $('themeToggle').addEventListener('click', function () {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    lsSet('tnf-theme', next);
+    updateToggleIcon();
+    if (userId) sb.from('readers').update({ theme: next }).eq('user_id', userId).then(function () {});
+  });
+  updateToggleIcon();
+
+  // Nav panel
+  function openNav() { $('navPanel').classList.add('open'); $('navOverlay').classList.add('open'); }
+  function closeNav() { $('navPanel').classList.remove('open'); $('navOverlay').classList.remove('open'); }
+  $('navTab').addEventListener('click', openNav);
+  $('navClose').addEventListener('click', closeNav);
+  $('navOverlay').addEventListener('click', closeNav);
+
+  // Sign in
+  var pendingEmail = '';
+  $('emailForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = $('email').value.trim();
+    if (!email) return;
+    $('sendBtn').disabled = true;
+    $('emailMsg').className = 'msg';
+    $('emailMsg').textContent = 'Sending…';
+    sb.auth.signInWithOtp({ email: email, options: { emailRedirectTo: location.origin + '/read/' } }).then(function (r) {
+      $('sendBtn').disabled = false;
+      if (r.error) {
+        $('emailMsg').className = 'msg err';
+        $('emailMsg').textContent = /rate|limit|seconds/i.test(r.error.message)
+          ? 'Too many requests just now. Please wait a minute and try again.'
+          : 'That didn’t work: ' + r.error.message;
+        return;
+      }
+      pendingEmail = email;
+      $('emailMsg').textContent = 'Check your inbox (and spam) for an email from The New Full. Tap the link, or type the code below.';
+      $('codeForm').classList.remove('hidden');
+    });
+  });
+  $('codeForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var token = $('code').value.replace(/\s/g, '');
+    if (!token || !pendingEmail) return;
+    sb.auth.verifyOtp({ email: pendingEmail, token: token, type: 'email' }).then(function (r) {
+      if (r.error) { $('emailMsg').className = 'msg err'; $('emailMsg').textContent = 'That code didn’t work. Check it, or request a new email.'; }
+    });
+  });
+  $('signOut').addEventListener('click', function () { sb.auth.signOut().then(function () { location.href = '/read/'; }); });
+
+  // Reading position: per browser (localStorage) and per reader (Supabase). Most recent wins.
+  var chapterEls = [];
+  function currentPosition() {
+    var best = null, bestTop = -Infinity;
+    for (var i = 0; i < chapterEls.length; i++) {
+      var rect = chapterEls[i].el.getBoundingClientRect();
+      if (rect.top <= 80 && rect.top > bestTop) { bestTop = rect.top; best = chapterEls[i]; }
+    }
+    if (!best) return null;
+    var r = best.wrap.getBoundingClientRect();
+    var pct = r.height > 0 ? Math.min(100, Math.max(0, (-r.top / r.height) * 100)) : 0;
+    return { chapter_id: best.id, title: best.title, scroll_pct: Math.round(pct * 100) / 100, updated_at: new Date().toISOString() };
+  }
+  var remoteTimer = null, lastPos = null;
+  function savePosition() {
+    var p = currentPosition();
+    if (!p) return;
+    lastPos = p;
+    lsSet(POS_KEY, JSON.stringify(p));
+    clearTimeout(remoteTimer);
+    remoteTimer = setTimeout(pushRemote, 4000);
+  }
+  function pushRemote() {
+    if (!lastPos || !userId) return;
+    sb.from('reading_positions').upsert({
+      user_id: userId, chapter_id: lastPos.chapter_id, scroll_pct: lastPos.scroll_pct,
+      device: /Mobi/i.test(navigator.userAgent) ? 'mobile' : 'desktop', updated_at: lastPos.updated_at
+    }).then(function () {});
+  }
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') pushRemote(); });
+
+  function jumpTo(pos) {
+    var c = chapterEls.filter(function (x) { return x.id === pos.chapter_id; })[0];
+    if (!c) return false;
+    var r = c.wrap.getBoundingClientRect();
+    window.scrollTo(0, window.scrollY + r.top + (r.height * (pos.scroll_pct || 0) / 100));
+    return true;
+  }
+
+  function render(chapters) {
+    var book = $('book'), toc = $('tocList'), nav = $('navList');
+    book.innerHTML = ''; toc.innerHTML = ''; nav.innerHTML = '';
+    chapterEls = [];
+    chapters.forEach(function (c) {
+      var isPart = c.title.indexOf('Part ') === 0;
+      var wrap = document.createElement('section');
+      wrap.className = isPart ? 'part-body' : 'chapter';
+      var h = document.createElement('h1');
+      h.id = c.id; h.textContent = c.title;
+      if (isPart) h.className = 'part';
+      wrap.appendChild(h);
+      var body = document.createElement('div');
+      body.innerHTML = c.html;
+      wrap.appendChild(body);
+      book.appendChild(wrap);
+      if (!isPart) chapterEls.push({ id: c.id, title: c.title, el: h, wrap: wrap });
+      [toc, nav].forEach(function (list) {
+        var li = document.createElement('li');
+        if (isPart) li.className = 'toc-part';
+        var a = document.createElement('a');
+        a.href = '#' + c.id; a.textContent = c.title;
+        a.addEventListener('click', closeNav);
+        li.appendChild(a); list.appendChild(li);
+      });
+    });
+    $('navTab').classList.remove('hidden');
+  }
+
+  function daysLeft(reader) {
+    if (reader.lifetime) return null;
+    return Math.max(0, Math.ceil((new Date(reader.access_ends) - new Date()) / 86400000));
+  }
+
+  var started = false;
+  function start(session) {
+    if (started) return;
+    started = true;
+    userId = session.user.id;
+    if (location.hash && /access_token|error/.test(location.hash)) history.replaceState(null, '', location.pathname);
+    show('loading');
+    sb.rpc('start_access', { p_source: lsGet('tnf-src') || 'direct' }).then(function (r) {
+      if (r.error) { $('loading').textContent = 'Something went wrong opening the book. Please reload the page.'; return; }
+      var reader = Array.isArray(r.data) ? r.data[0] : r.data;
+      if (!lsGet('tnf-theme') && reader.theme) { document.documentElement.setAttribute('data-theme', reader.theme); updateToggleIcon(); }
+      var left = daysLeft(reader);
+      if (left === 0) {
+        if (LIFETIME_URL) {
+          $('lifetimeBtn').href = LIFETIME_URL + '?prefilled_email=' + encodeURIComponent(session.user.email || '') + '&client_reference_id=' + userId;
+          $('lifetimeBtn').classList.remove('hidden'); $('lifetimeSoon').classList.add('hidden');
+        }
+        show('ended');
+        return;
+      }
+      $('accessText').innerHTML = left === null ? 'Lifetime access' : '<strong>' + left + (left === 1 ? ' day' : ' days') + '</strong> left in your free month';
+      Promise.all([
+        sb.from('chapters').select('id,position,title,part,html').order('position'),
+        sb.from('reading_positions').select('chapter_id,scroll_pct,updated_at').maybeSingle()
+      ]).then(function (res) {
+        if (res[0].error || !res[0].data || !res[0].data.length) { $('loading').textContent = 'Something went wrong opening the book. Please reload the page.'; return; }
+        render(res[0].data);
+        show('reader');
+        var local = null; try { local = JSON.parse(lsGet(POS_KEY) || 'null'); } catch (e) {}
+        var remote = res[1].data;
+        var pos = local;
+        if (remote && (!local || new Date(remote.updated_at) > new Date(local.updated_at))) pos = remote;
+        if (location.hash && document.getElementById(location.hash.slice(1))) {
+          document.getElementById(location.hash.slice(1)).scrollIntoView();
+        } else if (pos) {
+          var c = chapterEls.filter(function (x) { return x.id === pos.chapter_id; })[0];
+          if (c) {
+            requestAnimationFrame(function () {
+              jumpTo(pos);
+              $('resumeLink').textContent = 'the top of ' + c.title;
+              $('resumeLink').href = '#' + c.id;
+            });
+          }
+        }
+        var t = null;
+        window.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(savePosition, 800); }, { passive: true });
+      });
+    });
+  }
+
+  $('resumeClose').addEventListener('click', function () { $('resumeBanner').classList.remove('show'); });
+
+  // Local layout check only: never runs on the live site.
+  if (location.hostname === '127.0.0.1' && /[?&]demo\b/.test(location.search)) {
+    fetch('/_demo/chapters.json').then(function (r) { return r.json(); }).then(function (rows) {
+      started = true;
+      $('accessText').innerHTML = '<strong>30 days</strong> left in your free month';
+      render(rows); show('reader');
+      var local = null; try { local = JSON.parse(lsGet(POS_KEY) || 'null'); } catch (e) {}
+      if (local) requestAnimationFrame(function () { jumpTo(local); });
+      var t = null;
+      window.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(savePosition, 800); }, { passive: true });
+    });
+    return;
+  }
+
+  sb.auth.onAuthStateChange(function (event, session) {
+    if (session) start(session);
+  });
+  sb.auth.getSession().then(function (r) {
+    if (r.data && r.data.session) start(r.data.session);
+    else if (!started) {
+      if (/error_description=/.test(location.hash)) {
+        $('emailMsg').className = 'msg err';
+        $('emailMsg').textContent = 'That sign-in link has expired or was already used. Enter your email for a new one.';
+        history.replaceState(null, '', location.pathname);
+      }
+      show('signin');
+    }
+  });
+})();
+</script>
+</body>
+</html>
